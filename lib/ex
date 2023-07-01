@@ -1,0 +1,321 @@
+import 'dart:html';
+
+import 'package:flutter/material.dart';
+
+class login extends StatefulWidget {
+  const login({super.key});
+
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+  //Explicit
+
+  final formkey = GlobalKey<FormState>();
+  // String nameString, emailString, passwordString;
+
+//Method
+  Widget registerButton() {
+    return IconButton(
+      icon: Icon(Icons.add_location),
+      onPressed: () {
+        print('You Click Upload');
+        // if (formkey.currentState.validate()) {
+        //   formkey.currentState.save();
+        // }
+      },
+    );
+  }
+
+  Widget nameText() {
+    return TextFormField(
+      style: TextStyle(color: Colors.black),
+      decoration: InputDecoration(
+        icon: Icon(
+          Icons.face,
+          color: Color.fromARGB(255, 255, 36, 36),
+          size: 30.0,
+        ),
+        labelText: 'ຊື່ຜູ້ໃຊ້ : ',
+        labelStyle: TextStyle(
+            color: Color.fromARGB(255, 255, 36, 36),
+            fontWeight: FontWeight.bold), //ປັບໃຫ້ໂຕໜັງສືເຂັ້ມຂື້ນ
+        helperText:
+            'ກະລຸນາປ້ອນຊື່ຂອງທ່ານໃສ່ບ່ອນວ່າງ', // ໂຕສະແດງບອກວ່າໃຫ້ໃສ່ຫຍັງ
+        helperStyle: TextStyle(
+          color: const Color.fromARGB(255, 255, 94, 94), //ສີໂຕໜັງສື
+          fontStyle: FontStyle.italic, //ໜັງສືອ່ຽງ
+        ),
+      ),
+      /*  validator: (String value) {
+        if (value.isEmpty) {
+          return 'P;ease Fill Name in the Blank';
+        } else {
+          return null;
+        }
+      },    */
+
+      //   labelStyle: TextStyle(color: colors.purple)),    / ປ່ຽນສີໂຕໜັງສືແຕ່ຂອງເຮົາມັນປ່ຽນບໍ່ໄດ້
+      // onSaved: (String value) {},
+    );
+  }
+
+  Widget lockText() {
+    return TextFormField(
+      style: TextStyle(color: Colors.black),
+      decoration: InputDecoration(
+        icon: Icon(
+          Icons.lock,
+          color: Color.fromARGB(255, 255, 36, 36),
+          size: 30.0,
+        ),
+        labelText: 'ລະຫັດຜ່ານ : ',
+        labelStyle: TextStyle(
+            color: Color.fromARGB(255, 255, 36, 36),
+            fontWeight: FontWeight.bold), //ປັບໃຫ້ໂຕໜັງສືເຂັ້ມຂື້ນ
+        helperText:
+            'ກະລຸນາປ້ອນລະຫັດຜ່ານຂອງທ່ານໃສ່ບ່ອນວ່າງ', // ໂຕສະແດງບອກວ່າໃຫ້ໃສ່ຫຍັງ
+        helperStyle: TextStyle(
+          color: const Color.fromARGB(255, 255, 94, 94), //ສີໂຕໜັງສື
+          fontStyle: FontStyle.italic, //ໜັງສືອ່ຽງ
+        ),
+      ),
+      // validator: (String value) {
+      //   if (value.isEmpty) {
+      //     return 'Please Fill Your Name in the Blank';
+      //   } else {
+      //     return null;
+      //   }
+      // },
+      //   labelStyle: TextStyle(color: colors.purple)),    / ປ່ຽນສີໂຕໜັງສືແຕ່ຂອງເຮົາມັນປ່ຽນບໍ່ໄດ້
+    );
+  }
+
+  Widget emailText() {
+    return TextFormField(
+      keyboardType: TextInputType
+          .emailAddress, //ຢູ່ຄີບອດ ທລສ ຈະສ້າງແດງ' "@" ຂື້ນມາຢູ່ແປ້ນພີມ
+      style: TextStyle(color: Colors.black),
+      decoration: InputDecoration(
+        icon: Icon(
+          Icons.email,
+          color: Color.fromARGB(255, 255, 36, 36),
+          size: 30.0,
+        ),
+        labelText: 'ອີ່ເມວ : ',
+        labelStyle: TextStyle(
+            color: Color.fromARGB(255, 255, 36, 36),
+            fontWeight: FontWeight.bold), //ປັບໃຫ້ໂຕໜັງສືເຂັ້ມຂື້ນ
+        helperText:
+            'ກະລຸນາປ້ອນອີເມວຂອງທ່ານໃສ່ບ່ອນວ່າງ', // ໂຕສະແດງບອກວ່າໃຫ້ໃສ່ຫຍັງ
+        helperStyle: TextStyle(
+          color: const Color.fromARGB(255, 255, 94, 94), //ສີໂຕໜັງສື
+          fontStyle: FontStyle.italic, //ໜັງສືອ່ຽງ
+        ),
+      ),
+      // validator: (String value) {
+      //   if (!((value.contains('@')) && (value.contains('.')))) {
+      //     return 'Please Type Email in Exp. you@.com';
+      //   } else {
+
+      //   }
+      // },
+      //   labelStyle: TextStyle(color: colors.purple)),    / ປ່ຽນສີໂຕໜັງສືແຕ່ຂອງເຮົາມັນປ່ຽນບໍ່ໄດ້
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('LOG IN'),
+        backgroundColor: Color.fromARGB(255, 219, 77, 45),
+        actions: <Widget>[registerButton()],
+      ),
+      body: Form(
+        key: formkey,
+        child: ListView(
+          padding: EdgeInsets.all(30.0),
+          children: [
+           emailText(),
+            lockText(),
+            
+          ], //<widget>[]
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+class login extends StatefulWidget {
+  const login({super.key});
+
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  Widget showlogo() {
+    return Container(
+      width: 160,
+      height: 160,
+      child: Image.asset('images/shopping.png'),
+    );
+  }
+
+  Widget showStringr() {
+    return Text(
+      "Login",
+      style: (TextStyle(
+          fontFamily: 'nakhin',
+          fontSize: 30.0,
+          color: Color.fromARGB(255, 255, 255, 255))),
+    ); //ຕົວເລກ
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Login UI Exodie'),
+      ),
+
+      //
+      //
+      //
+      //
+      body: Padding(
+        padding: EdgeInsets.all(10),
+        child: ListView(
+          children: <Widget>[
+            showlogo(),
+            showStringr(),
+
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "Login",
+                style: TextStyle(
+                    fontFamily: 'nakhin',
+                    color: Colors.pink,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20.0),
+              ),
+            ),
+            //
+            //
+            //
+            //
+            // Container(
+            //   alignment: Alignment.center,
+            //   padding: EdgeInsets.all(10),
+            //   child: Text(
+            //     "sing in",
+            //     style: TextStyle(fontSize: 20),
+            //   ),
+            // ),
+            //
+            //
+            //
+            //
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'UserName',
+                ),
+              ),
+            ),
+            //
+            //
+            //
+            //
+
+            Container(
+              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+              child: TextField(
+                obscureText: true, //ຕາເທບບໍ່ໂຊ password
+                controller: passwordController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'Password'),
+              ),
+            ),
+//
+//
+//
+//
+            // FlatButton(
+            //   onPressed: () {},
+            //   textcolor: Colors.blue,
+            //   child: Text('Forgot Password'),
+            // ),
+
+            // Container(
+            //   height: 50,
+            //   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            //   child: RaisedButton(
+            //     textColor: Colors.white,
+            //     Color: Colors.blue,
+            //     child: Text('Login'),
+            //     onPressed: () {
+            //       print(nameController);
+            //       print(passwordController);
+            //     },
+            //   ),
+            // ),
+            //
+            //
+            //
+            //
+            // Container(
+            //   child: Row(
+            //     children: <Widget>[
+            //       Text(" ບໍ່ມີບັນຊີ ?"),
+            //       ElatButton(
+            //         TextColor: Colors.blue,
+            //         child: Text(
+            //           'Sign in',
+            //           style: TextStyle(fontSize: 20),
+            //         ),
+            //         onPressed: () {},
+            //       ),
+            //     ],
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //   ),
+            // ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,165 @@
+//vga_deail
+import 'package:flutter/material.dart';
+
+class VgaDetailPage extends StatelessWidget {
+  Widget showlogo() {
+    return Container(
+      width: 145.0,
+      height: 145.0,
+      child: Image.asset('images/lenovo1.jpg'),
+    );
+  }
+
+  Widget showlogo1() {
+    return Container(
+      width: 145.0,
+      height: 145.0,
+      child: Image.asset('images/lenovo2.jpg'),
+    );
+  }
+
+  Widget showButton() {
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        showlogo(),
+        SizedBox(
+          width: 5.0,
+        ),
+        showlogo1(),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ລາຍລະອຽດສີນຄ້າ'),
+        backgroundColor: Color.fromARGB(255, 255, 80, 41),
+      ),
+
+      //
+
+      //     body: Container(
+      //         child: ElevatedButton(
+      //       child: Text('ກັບຄືນ'),
+      //       onPressed: () => Navigator.pop(context),
+      //       style: TextButton.styleFrom(
+      //         backgroundColor: Color.fromARGB(255, 66, 210, 0),
+
+      //       ),
+
+      //     )),
+      //   );
+      // }
+
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: RadialGradient(colors: [
+          Color.fromARGB(255, 240, 123, 123),
+          Color.fromARGB(255, 225, 82, 21)
+        ], radius: 1.0)),
+        child: Center(
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                showButton(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+///
+///
+////
+////
+////
+////
+////
+////
+/////
+////
+///
+////
+///
+///
+///
+
+
+//mypc
+import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'vga_deail.dart';
+
+class mypc extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ສິນຄ້າລາຄາແພງ'),
+        backgroundColor: Color.fromARGB(255, 255, 80, 41),
+      ),
+
+  @override
+  Widget build(BuildContext context) {
+    //ພື້ນທາງລຸ່ມ
+    return BottomNavigationBar(items: const [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
+      BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting')
+    ]);
+
+      body: ListView.builder(
+        itemCount: 1,
+        itemBuilder: (context, i) {
+          return GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VgaDetailPage(),
+                  )),
+              child: Row(
+                children: [
+                  Container(
+                    height: 150.0,
+                    width: 150.0,
+                    child: CachedNetworkImage(
+                      imageUrl: "images/lenovo1.jpg",
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  ),
+                  Text('ປະທ່ານ ຄິນ'),
+
+                  //
+
+                  Container(
+                    height: 150.0,
+                    width: 150.0,
+                    child: CachedNetworkImage(
+                      imageUrl: "images/lenovo2.jpg",
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  ),
+                  Text('ໝາໜ້າໂງ່'),
+
+                  //
+                ],
+              ));
+        },
+      ),
+    );
+  }
+}
+
